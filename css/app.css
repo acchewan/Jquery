@@ -44,12 +44,9 @@
 }
 
 #item-date {
-  width: 130px;
+  width: 120px;
   padding: 10px 12px;
-}
-
-#item-date::placeholder {
-  color: var(--gray);
+  text-align: center;
 }
 
 #item-form button[type="submit"] {

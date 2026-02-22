@@ -20,12 +20,15 @@ class UI {
         $li.addClass("checked");
       }
 
-      const formattedDate = this._formatDate(item._date);
+      const formattedDate = item._date ? this._formatDate(item._date) : "";
+      const dateHtml = formattedDate
+        ? `<span class="item-date">${formattedDate}</span>`
+        : "";
 
       $li.html(`
         <input type="checkbox" class="item-checkbox" data-id="${item._id}" ${item._completed ? "checked" : ""}>
         <span class="item-name">${this._escapeHtml(item._title)}</span>
-        <span class="item-date">${formattedDate}</span>
+        ${dateHtml}
         <button class="edit-btn" data-id="${item._id}">Edit</button>
         <button class="delete-btn" data-id="${item._id}">Delete</button>
       `);
@@ -65,10 +68,6 @@ class UI {
     const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
-  }
-}
-    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-    return date.toLocaleDateString("en-GB", options);
   }
 }
 

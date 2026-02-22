@@ -16,15 +16,32 @@ const render = () => {
 
 render();
 
+// Helper function to parse dd/mm/yyyy to YYYY-MM-DD
+const parseDateInput = (dateStr) => {
+  const parts = dateStr.trim().split("/");
+  if (parts.length === 3) {
+    const [day, month, year] = parts;
+    return `${year}-${month}-${day}`;
+  }
+  return dateStr;
+};
+
 $form.on("submit", function (e) {
   e.preventDefault();
 
   const taskTitle = $nameInput.val().trim();
-  const dueDate = $dateInput.val();
+  const dateInput = $dateInput.val().trim();
+
+  if (!taskTitle) {
+    alert("Please enter a task");
+    return;
+  }
+
+  const dueDate = dateInput ? parseDateInput(dateInput) : "";
 
   todoList.add(taskTitle, dueDate);
   render();
-  $form[0].reset(); // reset native form
+  $form[0].reset();
 });
 
 // Handle list clicks (delete, edit, save, cancel, checkbox)
@@ -50,8 +67,9 @@ $("#item-list").on("click", "button, .item-checkbox", function (e) {
     const $li = $target.parent();
     const { title, date } = ui.getEditValues($li);
 
-    if (title && date) {
-      todoList.update(id, title, date);
+    if (title) {
+      const dueDate = date ? parseDateInput(date) : "";
+      todoList.update(id, title, dueDate);
       render();
     }
   }
