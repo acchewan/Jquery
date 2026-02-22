@@ -1,18 +1,18 @@
 // Storage key
-const STORAGE_KEY = "inventory";
+const STORAGE_KEY = "todolist";
 
-// Get inventory from sessionStorage
-export function getInventory() {
-    const data = sessionStorage.getItem(STORAGE_KEY);
-    return data ? $.parseJSON(data) : [];
+// Get todo list from sessionStorage
+export function getTodoList() {
+  const data = sessionStorage.getItem(STORAGE_KEY);
+  return data ? $.parseJSON(data) : [];
 }
 
-// Save inventory to sessionStorage
-export function saveInventory(inventory) {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(inventory));
+// Save todo list to sessionStorage
+export function saveTodoList(todolist) {
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(todolist));
 }
 
-// Clear all inventory from sessionStorage
-export function clearInventory() {
-    sessionStorage.removeItem(STORAGE_KEY);
+// Clear all todos from sessionStorage
+export function clearTodoList() {
+  sessionStorage.removeItem(STORAGE_KEY);
 }

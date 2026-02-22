@@ -41,9 +41,12 @@
   flex: 1;
 }
 
-#item-qty {
-  width: 70px;
-  text-align: center;
+#item-date {
+  width: 120px;
+}
+
+#item-date::placeholder {
+  color: var(--gray);
 }
 
 #item-form button[type="submit"] {
@@ -71,12 +74,20 @@
   gap: 12px;
 }
 
-#item-list:empty::before {
-  content: "No items yet";
+#empty-message {
   text-align: center;
   color: var(--gray);
   font-style: italic;
-  padding: 50px 0;
+  padding: 50px 20px;
+}
+
+#stats {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--gray);
 }
 
 #item-list li {
@@ -103,13 +114,10 @@
   color: var(--dark);
 }
 
-.item-qty {
-  background: var(--primary);
-  color: var(--white);
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
+.item-date {
+  color: var(--gray);
+  font-size: 0.85rem;
+  min-width: 90px;
 }
 
 .item-checkbox {
@@ -120,7 +128,7 @@
 }
 
 #item-list li.checked .item-name,
-#item-list li.checked .item-qty {
+#item-list li.checked .item-date {
   text-decoration: line-through;
   opacity: 0.5;
 }
@@ -161,7 +169,7 @@
 }
 
 .edit-name,
-.edit-qty {
+.edit-date {
   padding: 8px 10px;
   border-radius: 10px;
   border: 1px solid var(--primary);
@@ -173,9 +181,8 @@
   flex: 1;
 }
 
-.edit-qty {
-  width: 60px;
-  text-align: center;
+.edit-date {
+  width: 110px;
 }
 
 .save-btn,
