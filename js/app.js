@@ -1,25 +1,21 @@
 import TodoList from "./todolist.js";
 import UI from "./ui.js";
 
-// Initialize
 const todoList = new TodoList();
-const ui = new UI($("#item-list")); // jQuery object
+const ui = new UI($("#item-list"));
 
 const $form = $("#item-form");
 const $nameInput = $("#item-name");
 const $dateInput = $("#item-date");
 
-// Helper to re-render
 const render = () => {
   ui.renderItems(todoList.items);
   const stats = todoList.getStats();
   ui.updateStats(stats.total, stats.completed, stats.percentage);
 };
 
-// Initial render
 render();
 
-// Add new item
 $form.on("submit", function (e) {
   e.preventDefault();
 
@@ -34,7 +30,7 @@ $form.on("submit", function (e) {
 // Handle list clicks (delete, edit, save, cancel, checkbox)
 $("#item-list").on("click", "button, .item-checkbox", function (e) {
   const $target = $(e.target);
-  const id = parseInt($target.data("id")); // jQuery .data() for data-id
+  const id = parseInt($target.data("id"));
   const item = todoList.findById(id);
 
   // Delete
@@ -46,7 +42,7 @@ $("#item-list").on("click", "button, .item-checkbox", function (e) {
   // Edit
   if ($target.hasClass("edit-btn")) {
     const $li = $target.parent();
-    ui.showEditForm($li, item); // Pass jQuery object
+    ui.showEditForm($li, item);
   }
 
   // Save
@@ -65,7 +61,6 @@ $("#item-list").on("click", "button, .item-checkbox", function (e) {
     render();
   }
 
-  // Checkbox toggle
   if ($target.hasClass("item-checkbox")) {
     todoList.toggleCompleted(id);
     render();

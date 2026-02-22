@@ -2,8 +2,7 @@ import { getInventory, saveInventory } from "./storage.js";
 
 class Inventory {
   constructor() {
-    // Use jQuery $.extend to clone, optional
-    this._items = $.extend(true, [], getInventory()); 
+    this._items = $.extend(true, [], getInventory());
   }
 
   get items() {
@@ -15,7 +14,7 @@ class Inventory {
       _id: Date.now(),
       _name: name,
       _quantity: quantity,
-      _checked: false
+      _checked: false,
     };
     this._items.push(newItem);
     this._save();
@@ -23,7 +22,7 @@ class Inventory {
   }
 
   delete(id) {
-    this._items = $.grep(this._items, function(item) {
+    this._items = $.grep(this._items, function (item) {
       return item._id !== id;
     });
     this._save();
@@ -40,9 +39,9 @@ class Inventory {
   }
 
   findById(id) {
-    return $.grep(this._items, function(item){
+    return $.grep(this._items, function (item) {
       return item._id === id;
-    })[0]; // grep returns array
+    })[0];
   }
 
   toggleChecked(id) {

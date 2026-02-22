@@ -2,7 +2,6 @@ import { getTodoList, saveTodoList } from "./storage.js";
 
 class TodoList {
   constructor() {
-    // Use jQuery $.extend to clone, optional
     this._items = $.extend(true, [], getTodoList());
   }
 
@@ -42,7 +41,7 @@ class TodoList {
   findById(id) {
     return $.grep(this._items, function (item) {
       return item._id === id;
-    })[0]; // grep returns array
+    })[0];
   }
 
   toggleCompleted(id) {

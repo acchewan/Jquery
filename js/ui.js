@@ -1,10 +1,10 @@
 class UI {
   constructor($listElement) {
-    this._list = $listElement; // jQuery object
+    this._list = $listElement;
   }
 
   renderItems(items) {
-    this._list.empty(); // clear the list
+    this._list.empty();
 
     if (items.length === 0) {
       this._list.html(
@@ -24,7 +24,7 @@ class UI {
 
       $li.html(`
         <input type="checkbox" class="item-checkbox" data-id="${item._id}" ${item._completed ? "checked" : ""}>
-        <span class="item-name">${item._title}</span>
+        <span class="item-name">${this._escapeHtml(item._title)}</span>
         <span class="item-date">${formattedDate}</span>
         <button class="edit-btn" data-id="${item._id}">Edit</button>
         <button class="delete-btn" data-id="${item._id}">Delete</button>
@@ -35,9 +35,8 @@ class UI {
   }
 
   showEditForm($li, item) {
-    // $li is a jQuery object
     $li.html(`
-      <input class="edit-name" type="text" value="${item._title}" />
+      <input class="edit-name" type="text" value="${this._escapeHtml(item._title)}" />
       <input class="edit-date" type="date" value="${item._date}" />
       <button class="save-btn" data-id="${item._id}">Save</button>
       <button class="cancel-btn" data-id="${item._id}">Cancel</button>
@@ -58,6 +57,16 @@ class UI {
 
   _formatDate(dateStr) {
     const date = new Date(dateStr + "T00:00:00");
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return date.toLocaleDateString("en-GB", options);
+  }
+
+  _escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+}
     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
     return date.toLocaleDateString("en-GB", options);
   }
