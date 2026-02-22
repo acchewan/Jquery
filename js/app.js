@@ -16,8 +16,14 @@ const render = () => {
 
 render();
 
-// Helper function to parse dd/mm/yyyy to YYYY-MM-DD
+// Helper function to parse dd/mm/yyyy to YYYY-MM-DD (for edit form text input)
 const parseDateInput = (dateStr) => {
+  if (!dateStr) return "";
+  // If already in YYYY-MM-DD format, return as is
+  if (dateStr.match(/^\d{4}-\d{2}-\d{2}$/)) {
+    return dateStr;
+  }
+  // Parse dd/mm/yyyy format
   const parts = dateStr.trim().split("/");
   if (parts.length === 3) {
     const [day, month, year] = parts;
@@ -30,14 +36,12 @@ $form.on("submit", function (e) {
   e.preventDefault();
 
   const taskTitle = $nameInput.val().trim();
-  const dateInput = $dateInput.val().trim();
+  const dueDate = $dateInput.val().trim() || "";
 
   if (!taskTitle) {
     alert("Please enter a task");
     return;
   }
-
-  const dueDate = dateInput ? parseDateInput(dateInput) : "";
 
   todoList.add(taskTitle, dueDate);
   render();

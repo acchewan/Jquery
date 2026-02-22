@@ -38,9 +38,10 @@ class UI {
   }
 
   showEditForm($li, item) {
+    const dateValue = item._date || "";
     $li.html(`
       <input class="edit-name" type="text" value="${this._escapeHtml(item._title)}" />
-      <input class="edit-date" type="date" value="${item._date}" />
+      <input class="edit-date" type="date" value="${dateValue}" />
       <button class="save-btn" data-id="${item._id}">Save</button>
       <button class="cancel-btn" data-id="${item._id}">Cancel</button>
     `);
