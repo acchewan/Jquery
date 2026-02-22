@@ -1,0 +1,211 @@
+#app {
+  max-width: 480px;
+  margin: 50px auto;
+  padding: 25px;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#app > h1 {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 30px;
+}
+
+#item-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+#item-form input {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--light-gray);
+  font-size: 0.95rem;
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
+}
+
+#item-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 5px var(--primary);
+}
+
+#item-name {
+  flex: 1;
+}
+
+#item-qty {
+  width: 70px;
+  text-align: center;
+}
+
+#item-form button[type="submit"] {
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+#item-form button[type="submit"]:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+#item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#item-list:empty::before {
+  content: "No items yet";
+  text-align: center;
+  color: var(--gray);
+  font-style: italic;
+  padding: 50px 0;
+}
+
+#item-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  background: var(--bg);
+  border-radius: 15px;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+}
+
+#item-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.item-name {
+  flex: 1;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--dark);
+}
+
+.item-qty {
+  background: var(--primary);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.item-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+#item-list li.checked .item-name,
+#item-list li.checked .item-qty {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+}
+
+.edit-btn {
+  background: #f0f0ff;
+  color: var(--primary);
+}
+
+.edit-btn:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background: #fff0f0;
+  color: var(--danger);
+}
+
+.delete-btn:hover {
+  background: var(--danger);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.edit-name,
+.edit-qty {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.edit-name {
+  flex: 1;
+}
+
+.edit-qty {
+  width: 60px;
+  text-align: center;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.1s;
+}
+
+.save-btn {
+  background: var(--success);
+  color: var(--white);
+}
+
+.save-btn:hover {
+  background: var(--success-hover);
+  transform: scale(1.05);
+}
+
+.cancel-btn {
+  background: var(--gray);
+  color: var(--white);
+}
+
+.cancel-btn:hover {
+  background: var(--dark);
+  transform: scale(1.05);
+}
